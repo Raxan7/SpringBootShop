@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0">Add New Product</h2>
+                        <a th:href="@{/products}" class="btn btn-light">View All Products</a>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/product/save}" th:object="${product}" method="post">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Product Name</label>
+                                    <input type="text" th:field="*{name}" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="price" class="form-label">Price ($)</label>
+                                    <input type="number" th:field="*{price}" class="form-control" id="price" step="0.01" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea th:field="*{description}" class="form-control" id="description" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="quantity" class="form-label">Quantity</label>
+                                    <input type="number" th:field="*{quantity}" class="form-control" id="quantity" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="category" class="form-label">Category</label>
+                                    <input type="text" th:field="*{category}" class="form-control" id="category">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="manufacturer" class="form-label">Manufacturer</label>
+                                <input type="text" th:field="*{manufacturer}" class="form-control" id="manufacturer">
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="manufactureDate" class="form-label">Manufacture Date</label>
+                                    <input type="date" th:field="*{manufactureDate}" class="form-control" id="manufactureDate">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="expiryDate" class="form-label">Expiry Date</label>
+                                    <input type="date" th:field="*{expiryDate}" class="form-control" id="expiryDate">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" th:field="*{available}" id="available">
+                                    <label class="form-check-label" for="available">
+                                        Available for Sale
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="imageUrl" class="form-label">Image URL</label>
+                                <input type="text" th:field="*{imageUrl}" class="form-control" id="imageUrl">
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Save Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

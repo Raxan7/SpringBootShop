@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Saved Successfully</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="mb-0">Product Saved Successfully!</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success mb-4">
+                            <p class="mb-0">Your product has been successfully added to the database.</p>
+                        </div>
+                        
+                        <h3>Product Details:</h3>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th>ID</th>
+                                    <td th:text="${product.id}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <td th:text="${product.name}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td th:text="${product.description}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    <td th:text="${'$' + product.price}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Quantity</th>
+                                    <td th:text="${product.quantity}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Category</th>
+                                    <td th:text="${product.category}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Manufacturer</th>
+                                    <td th:text="${product.manufacturer}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Manufacture Date</th>
+                                    <td th:text="${product.manufactureDate}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Expiry Date</th>
+                                    <td th:text="${product.expiryDate}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Available</th>
+                                    <td th:text="${product.available ? 'Yes' : 'No'}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Image URL</th>
+                                    <td>
+                                        <a th:if="${product.imageUrl}" th:href="${product.imageUrl}" target="_blank" th:text="${product.imageUrl}"></a>
+                                        <span th:unless="${product.imageUrl}">No image provided</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                            <a th:href="@{/product/new}" class="btn btn-primary btn-lg">Add Another Product</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
