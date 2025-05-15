@@ -20,6 +20,12 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
     
+    // Home page
+    @GetMapping("/")
+    public String homePage() {
+        return "home";
+    }
+    
     // Show form to create a product
     @GetMapping("/product/new")
     public String showProductForm(Model model) {
@@ -57,12 +63,6 @@ public class ProductController {
         } else {
             return "redirect:/products";
         }
-    }
-    
-    // Redirect root to the form
-    @GetMapping("/")
-    public String redirectToForm() {
-        return "redirect:/product/new";
     }
     
     // Custom date formatter for the form
